@@ -21,27 +21,29 @@ public class anagram {
 	}
 	public static Map<String, String> MapAnagrams(ArrayList<String> WordList){
 		String check="";
-	    		Map<String, String> WordList = new HasWordList<String, String>();
-	    		for (int i = 0; i < s.size(); i++) {
-			        String str=s.get(i);
+	    		Map<String, String> hMap = new HashMap<String, String>();
+	    		for (int i = 0; i < WordList.size(); i++) {
+			        String str=WordList.get(i);
 			        String sSort=sortWord(str);
-			        if(WordList.containsKey(sSort)){
-			             check=WordList.get(sSort);
+			        if(hMap.containsKey(sSort)){
+			             check=hMap.get(sSort);
 			             check+=" "+str;
-			             WordList.put(sSort,check);
+			             hMap.put(sSort,check);
 			        }
 			        else{
-			            WordList.put(sSort,str);
+			            hMap.put(sSort,str);
 			        }
 		        }
-		        return WordList;
+		        return hMap;
 	}
 
-	public static String Sort(String str){
-		String SortedString = "";
-		return SortedString;
-	}
-	public static displayMap(Map<String,String> FinalMap){
+	public static String sortWord(String word) {
+        char[] chars = word.toCharArray();
+        Arrays.sort(chars);
+        String sorted = new String(chars);
+        return sorted;
+    }
+	public static void displayMap(Map<String,String> FinalMap){
 	    Iterator it = FinalMap.entrySet().iterator();
         while (it.hasNext()) {
         Map.Entry pair = (Map.Entry)it.next();
@@ -49,3 +51,5 @@ public class anagram {
         it.remove();
 	}
 }
+}
+
