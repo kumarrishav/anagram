@@ -19,6 +19,7 @@ public class anagram {
 		}
 		return WordList;
 	}
+	
 	public static Map<String, String> MapAnagrams(ArrayList<String> WordList){
 		String check="";
 	    		Map<String, String> hMap = new HashMap<String, String>();
@@ -43,13 +44,21 @@ public class anagram {
         String sorted = new String(chars);
         return sorted;
     }
+	
 	public static void displayMap(Map<String,String> FinalMap){
 	    Iterator it = FinalMap.entrySet().iterator();
-        while (it.hasNext()) {
-        Map.Entry pair = (Map.Entry)it.next();
-        System.out.println(pair.getValue());
-        it.remove();
+        int countAnagrams=0;
+	    while (it.hasNext()) {
+        	Map.Entry pair = (Map.Entry)it.next();
+        	String str = pair.getValue().toString();
+        	String[] AnagramList = str.split("\\s");
+        	int size = AnagramList.length;
+        	if(size>1){
+        		System.out.println(pair.getValue());
+        		countAnagrams++;
+        	}
+        	it.remove();
+	    }
+	    System.out.println(countAnagrams);
 	}
 }
-}
-
