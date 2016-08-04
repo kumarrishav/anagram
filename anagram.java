@@ -20,8 +20,21 @@ public class anagram {
 		return WordList;
 	}
 	public static Map<String, String> MapAnagrams(ArrayList<String> WordList){
-		Map<String, String> FinalMap = new HashMap<String, String>();
-		return FinalMap;
+		String check="";
+	    		Map<String, String> WordList = new HasWordList<String, String>();
+	    		for (int i = 0; i < s.size(); i++) {
+			        String str=s.get(i);
+			        String sSort=sortWord(str);
+			        if(WordList.containsKey(sSort)){
+			             check=WordList.get(sSort);
+			             check+=" "+str;
+			             WordList.put(sSort,check);
+			        }
+			        else{
+			            WordList.put(sSort,str);
+			        }
+		        }
+		        return WordList;
 	}
 
 	public static String Sort(String str){
@@ -29,7 +42,10 @@ public class anagram {
 		return SortedString;
 	}
 	public static displayMap(Map<String,String> FinalMap){
-		
-		
+	    Iterator it = FinalMap.entrySet().iterator();
+        while (it.hasNext()) {
+        Map.Entry pair = (Map.Entry)it.next();
+        System.out.println(pair.getValue());
+        it.remove();
 	}
 }
